@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modulys — Outils web modulaires pour événements et animations</title>
+  <meta name="description" content="Modulys regroupe des mini-apps web simples et prêtes à l'emploi pour animer vos événements : votes en direct, blind tests interactifs, outils d'ateliers et modules personnalisés.">
+  <meta name="theme-color" content="#111827">
+  <meta property="og:title" content="Modulys — Des mini-apps web prêtes à l'emploi">
+  <meta property="og:description" content="Des outils simples, modulaires et accessibles depuis un lien pour vos événements, ateliers et animations.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;650;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/modulys.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header class="site-header" aria-label="En-tête du site">
+    <div class="container navbar">
+      <a class="brand" href="#top" aria-label="Accueil Modulys">
+        <img src="assets/img/modulys-logo.svg" alt="Modulys">
+      </a>
+
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="#modules">Modules</a>
+        <a href="#tarifs">Tarifs</a>
+        <a href="#demo">Démo</a>
+        <a href="#architecture">Fiabilité</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn btn-ghost" href="#modules">Voir les modules</a>
+        <a class="btn btn-primary" href="#contact">Demander une démo</a>
+      </div>
+
+      <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" data-menu-toggle>
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <nav class="mobile-menu" aria-label="Navigation mobile" data-mobile-menu>
+      <a href="#modules">Modules</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#demo">Démo</a>
+      <a href="#architecture">Fiabilité</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="contenu">
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <span class="badge">Plateforme de mini-apps web modulaires</span>
+          <h1>Des outils web simples pour animer vos <span class="gradient-text">événements</span>.</h1>
+          <p class="lead">Modulys regroupe des modules prêts à l’emploi pour créer des animations interactives : votes en direct, blind tests, outils d’ateliers, sessions participatives et mini-apps personnalisées.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#modules">Voir les modules</a>
+            <a class="btn btn-secondary" href="#demo">Tester une démo</a>
+            <a class="btn btn-ghost" href="#contact">Me contacter</a>
+          </div>
+          <div class="hero-proof" aria-label="Avantages Modulys">
+            <span>Sans installation complexe</span>
+            <span>Compatible mobile</span>
+            <span>QR codes intégrés</span>
+            <span>Limites claires</span>
+          </div>
+        </div>
+
+        <div class="hero-card reveal" aria-label="Aperçu de l'interface Modulys">
+          <div class="app-window">
+            <div class="window-topbar" aria-hidden="true"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
+            <div class="window-body">
+              <span class="badge">Session active</span>
+              <h2>Soirée interactive</h2>
+              <div class="mini-stat-grid">
+                <div class="mini-stat"><strong>124</strong><span>participants</span></div>
+                <div class="mini-stat"><strong>2</strong><span>modules actifs</span></div>
+              </div>
+              <div class="live-panel">
+                <small>Résultats en direct</small>
+                <p>Vote du public en cours · écran prêt pour vidéoprojecteur</p>
+                <div class="progress" aria-hidden="true"><span></span></div>
+              </div>
+            </div>
+          </div>
+          <div class="floating-card" aria-label="Partage rapide par QR code">
+            <div class="qr-mock" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <strong>Lien ou QR code</strong>
+            <span>Les participants rejoignent depuis leur téléphone.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="principe">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-kicker">Le principe</p>
+          <h2 class="section-title">Un besoin précis. Un module simple. Une utilisation immédiate.</h2>
+          <p class="section-text">Modulys évite les plateformes trop lourdes : chaque module répond à un usage concret et peut être lancé rapidement pour un événement, un atelier ou une animation.</p>
+        </div>
+        <div class="steps-grid">
+          <article class="card step-card reveal">
+            <span class="step-number">1</span>
+            <h3>Choisissez un module</h3>
+            <p>Vote en direct, blind test interactif, animation de groupe ou futur outil métier.</p>
+          </article>
+          <article class="card step-card reveal">
+            <span class="step-number">2</span>
+            <h3>Créez votre session</h3>
+            <p>Configurez le titre, les équipes, les règles, l’écran public et les paramètres utiles.</p>
+          </article>
+          <article class="card step-card reveal">
+            <span class="step-number">3</span>
+            <h3>Partagez le lien</h3>
+            <p>Les participants rejoignent depuis leur mobile grâce à un lien ou un QR code.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="modules">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-kicker">Modules disponibles</p>
+          <h2 class="section-title">Les premiers outils Modulys</h2>
+          <p class="section-text">La plateforme démarre avec deux modules concrets, puis pourra accueillir de nouveaux outils au fil des besoins.</p>
+        </div>
+
+        <div class="modules-list">
+          <article class="module-card reveal">
+            <div class="module-visual">
+              <img src="assets/img/module-improvote.svg" alt="Illustration du module ImproVote">
+            </div>
+            <div class="module-content">
+              <span class="module-status">Disponible</span>
+              <h3>ImproVote</h3>
+              <p>Un module de vote en direct pour matchs d’improvisation, spectacles, battles, finales, jurys ou événements participatifs.</p>
+              <ul class="feature-list">
+                <li>Vote du public par QR code</li>
+                <li>Écran public vidéoprojecteur</li>
+                <li>Interface organisateur</li>
+                <li>Résultats en direct</li>
+                <li>Configuration des équipes</li>
+                <li>Session événementielle simple</li>
+              </ul>
+              <div class="module-actions">
+                <a class="btn btn-primary" href="https://improvote.modulys.top">Voir ImproVote</a>
+                <a class="btn btn-secondary" href="#contact">Demander une démo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="module-card reveal">
+            <div class="module-visual">
+              <img src="assets/img/module-blindtest.svg" alt="Illustration du module BlindTestMaster">
+            </div>
+            <div class="module-content">
+              <span class="module-status">Disponible</span>
+              <h3>BlindTestMaster</h3>
+              <p>Un blind test interactif avec équipes, réponses depuis smartphone, écran animateur et classement en direct.</p>
+              <ul class="feature-list">
+                <li>Création de parties</li>
+                <li>Équipes personnalisables</li>
+                <li>Réponses joueurs sur mobile</li>
+                <li>Classement en direct</li>
+                <li>Mode artiste / titre</li>
+                <li>Écran public d’animation</li>
+              </ul>
+              <div class="module-actions">
+                <a class="btn btn-primary" href="https://blindtestmaster.modulys.top">Voir BlindTestMaster</a>
+                <a class="btn btn-secondary" href="#contact">Demander une démo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="module-card is-coming reveal">
+            <div class="module-visual">
+              <img src="assets/img/module-coming-soon.svg" alt="Illustration des futurs modules Modulys">
+            </div>
+            <div class="module-content">
+              <span class="module-status">Évolutif</span>
+              <h3>D’autres modules arrivent</h3>
+              <p>Modulys est pensé pour accueillir progressivement d’autres mini-apps : quiz live, tirage au sort, feedback public, votes de jury, planning d’ateliers ou modules sur mesure.</p>
+              <ul class="feature-list">
+                <li>Quiz interactif</li>
+                <li>Tirage au sort</li>
+                <li>Feedback public</li>
+                <li>Votes de jury</li>
+                <li>Outils d’ateliers</li>
+                <li>Mini-apps personnalisées</li>
+              </ul>
+              <div class="module-actions">
+                <a class="btn btn-secondary" href="#contact">Proposer une idée</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="publics">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-kicker">Pour qui ?</p>
+          <h2 class="section-title">Pensé pour les organisateurs qui veulent aller vite</h2>
+          <p class="section-text">Modulys s’adresse aux structures qui veulent un outil fiable et clair, sans développement sur mesure ni paramétrage interminable.</p>
+        </div>
+        <div class="audience-grid">
+          <article class="card audience-card reveal"><span class="icon-bubble">🎭</span><h3>Associations</h3><p>Animations, spectacles, soirées, ateliers et événements locaux.</p></article>
+          <article class="card audience-card reveal"><span class="icon-bubble">🎤</span><h3>Animateurs</h3><p>Outils rapides pour faire participer le public en direct.</p></article>
+          <article class="card audience-card reveal"><span class="icon-bubble">🧑‍🏫</span><h3>Formateurs</h3><p>Modules simples pour dynamiser ateliers et formations.</p></article>
+          <article class="card audience-card reveal"><span class="icon-bubble">🏢</span><h3>Entreprises</h3><p>Team building, soirées internes et événements participatifs.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tarifs">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-kicker">Tarifs</p>
+          <h2 class="section-title">Des offres simples, sans illimité flou</h2>
+          <p class="section-text">Chaque offre prévoit des limites claires pour garantir un service fiable, maîtrisé et durable.</p>
+        </div>
+
+        <p class="pricing-note reveal">Les prix ci-dessous sont une première base commerciale V1. Ils peuvent être ajustés selon le module, le volume et l’accompagnement demandé.</p>
+
+        <div class="pricing-grid">
+          <article class="card price-card reveal">
+            <h3>Pass Événement</h3>
+            <p>Pour une soirée, un atelier ou une animation ponctuelle.</p>
+            <div class="price"><strong>29€</strong><span>/ événement</span></div>
+            <ul class="limits">
+              <li>1 module au choix</li>
+              <li>1 événement actif</li>
+              <li>Jusqu’à 100 participants</li>
+              <li>Accès pendant 7 jours</li>
+              <li>Historique court</li>
+            </ul>
+            <a class="btn btn-secondary" href="#contact">Acheter un pass</a>
+          </article>
+
+          <article class="card price-card featured reveal">
+            <span class="price-pill">Recommandé</span>
+            <h3>Module Annuel</h3>
+            <p>Pour les associations ou structures qui utilisent un module régulièrement.</p>
+            <div class="price"><strong>129€</strong><span>/ an</span></div>
+            <ul class="limits">
+              <li>1 module activé</li>
+              <li>Jusqu’à 40 événements/an</li>
+              <li>Jusqu’à 150 participants</li>
+              <li>Historique 90 jours</li>
+              <li>Support standard</li>
+            </ul>
+            <a class="btn btn-primary" href="#contact">S’abonner</a>
+          </article>
+
+          <article class="card price-card reveal">
+            <h3>Clé en main</h3>
+            <p>Pour un événement important ou un besoin personnalisé.</p>
+            <div class="price"><strong>149€</strong><span>et +</span></div>
+            <ul class="limits">
+              <li>Configuration de l’événement</li>
+              <li>Personnalisation légère</li>
+              <li>Préparation des modules</li>
+              <li>Accompagnement possible</li>
+              <li>Devis selon besoin</li>
+            </ul>
+            <a class="btn btn-secondary" href="#contact">Demander un devis</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="demo">
+      <div class="container">
+        <div class="demo-band reveal">
+          <div>
+            <h2>Testez avant de vous engager.</h2>
+            <p>Vous pouvez découvrir un module avec une démo limitée ou demander un accès test pour vérifier que l’outil correspond à votre événement.</p>
+          </div>
+          <div class="demo-actions">
+            <a class="btn btn-primary" href="https://improvote.modulys.top">Tester ImproVote</a>
+            <a class="btn btn-secondary" href="#contact">Demander un accès</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="architecture">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-kicker">Fiabilité</p>
+          <h2 class="section-title">Une base simple, prête à évoluer</h2>
+          <p class="section-text">La V1 peut rester légère tout en préparant les comptes clients, les modules activés, les limites d’utilisation et les évolutions commerciales.</p>
+        </div>
+        <div class="security-grid">
+          <article class="card security-card reveal"><span class="icon-bubble">🔐</span><h3>Comptes clients</h3><p>Accès organisateur sécurisé pour créer et gérer les sessions.</p></article>
+          <article class="card security-card reveal"><span class="icon-bubble">📦</span><h3>Modules activés</h3><p>Chaque client accède uniquement aux modules inclus dans son offre.</p></article>
+          <article class="card security-card reveal"><span class="icon-bubble">📊</span><h3>Limites claires</h3><p>Participants, événements, votes, sessions et historique sont encadrés.</p></article>
+          <article class="card security-card reveal"><span class="icon-bubble">🧩</span><h3>Évolutif</h3><p>De nouveaux modules peuvent être ajoutés sans refaire toute la plateforme.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-kicker">Questions fréquentes</p>
+          <h2 class="section-title">Simple à comprendre, simple à vendre</h2>
+        </div>
+        <div class="faq-grid">
+          <article class="card faq-item reveal">
+            <h3>Modulys est-il lié à une structure existante ?</h3>
+            <p>Non. Modulys est une marque générique et indépendante, pensée pour proposer plusieurs outils web à différents publics.</p>
+          </article>
+          <article class="card faq-item reveal">
+            <h3>Faut-il installer une application ?</h3>
+            <p>Non. Les modules sont accessibles depuis un navigateur, sur ordinateur, tablette ou smartphone.</p>
+          </article>
+          <article class="card faq-item reveal">
+            <h3>Peut-on acheter un seul module ?</h3>
+            <p>Oui. La V1 prévoit un usage ponctuel, un abonnement annuel par module et une offre clé en main.</p>
+          </article>
+          <article class="card faq-item reveal">
+            <h3>Peut-on créer un module sur mesure ?</h3>
+            <p>Oui, selon le besoin. Modulys peut évoluer avec des modules personnalisés pour des usages précis.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-card reveal">
+          <div>
+            <p class="section-kicker">Contact</p>
+            <h2>Un module vous intéresse ?</h2>
+            <p>Demandez une démo, un pass événement, un abonnement annuel ou une configuration clé en main.</p>
+            <ul class="contact-list">
+              <li>✓ Démo possible avant engagement</li>
+              <li>✓ Offres adaptées aux associations et événements</li>
+              <li>✓ Activation manuelle possible en V1</li>
+            </ul>
+          </div>
+
+          <form class="contact-form" data-contact-form>
+            <div class="field">
+              <label for="name">Nom / structure</label>
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="Votre nom ou votre structure" required>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="vous@exemple.fr" required>
+            </div>
+            <div class="field">
+              <label for="need">Besoin principal</label>
+              <select id="need" name="need" required>
+                <option value="">Choisir une option</option>
+                <option>Tester une démo</option>
+                <option>Acheter un pass événement</option>
+                <option>S’abonner à un module</option>
+                <option>Pack multi-modules</option>
+                <option>Offre clé en main</option>
+                <option>Créer un module personnalisé</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Décrivez votre événement, le nombre de participants prévu et le module qui vous intéresse."></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Envoyer la demande</button>
+            <p class="form-help">Le formulaire ouvre votre logiciel mail avec un message prérempli vers contact@modulys.top. Vous pouvez remplacer cette logique par Brevo, Make, Formspree ou Firebase Functions.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <img class="footer-logo" src="assets/img/modulys-logo.svg" alt="Modulys">
+          <p>Plateforme d’outils web modulaires pour événements, ateliers, formations et animations interactives.</p>
+        </div>
+        <div class="footer-links">
+          <h3>Navigation</h3>
+          <a href="#modules">Modules</a>
+          <a href="#tarifs">Tarifs</a>
+          <a href="#demo">Démo</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-links">
+          <h3>Légal</h3>
+          <a href="legal/mentions-legales.html">Mentions légales</a>
+          <a href="legal/confidentialite.html">Confidentialité</a>
+          <a href="legal/cgu.html">CGU</a>
+        </div>
+      </div>
+      <div class="footer-bottom">© <span data-year>2026</span> Modulys. Tous droits réservés.</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/modulys.js"></script>
+</body>
+</html>
