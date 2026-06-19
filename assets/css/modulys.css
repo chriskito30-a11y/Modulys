@@ -656,6 +656,23 @@ a {
   font-weight: 900;
 }
 
+
+.usage-rules {
+  margin-top: 22px;
+  padding: 26px;
+}
+
+.usage-rules h3 {
+  margin: 0 0 10px;
+  font-size: 24px;
+}
+
+.usage-rules p {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-weight: 650;
+}
+
 .demo-band {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -856,7 +873,24 @@ a {
   .mobile-menu a:hover { background: #f8fafc; }
   .hero-grid,
   .contact-card,
-  .demo-band { grid-template-columns: 1fr; }
+  
+.usage-rules {
+  margin-top: 22px;
+  padding: 26px;
+}
+
+.usage-rules h3 {
+  margin: 0 0 10px;
+  font-size: 24px;
+}
+
+.usage-rules p {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-weight: 650;
+}
+
+.demo-band { grid-template-columns: 1fr; }
   .steps-grid,
   .security-grid { grid-template-columns: 1fr 1fr; }
   .audience-grid { grid-template-columns: 1fr 1fr; }
@@ -880,7 +914,24 @@ a {
   .mini-stat-grid { grid-template-columns: 1fr; }
   .module-card,
   .contact-card,
-  .demo-band { padding: 18px; border-radius: 24px; }
+  
+.usage-rules {
+  margin-top: 22px;
+  padding: 26px;
+}
+
+.usage-rules h3 {
+  margin: 0 0 10px;
+  font-size: 24px;
+}
+
+.usage-rules p {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-weight: 650;
+}
+
+.demo-band { padding: 18px; border-radius: 24px; }
   .floating-card { position: static; width: 100%; margin-top: 16px; }
   .hero-actions .btn,
   .module-actions .btn,
