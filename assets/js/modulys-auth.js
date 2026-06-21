@@ -96,7 +96,7 @@ function isActiveGrant(grant) {
 function canAccessModule(module, access = {}, subscription = null) {
   if (!module?.active) return { allowed: false, label: "Indisponible", reason: "module_inactive" };
   if (module.accessMode === "public") return { allowed: true, label: "Accès public", reason: "public" };
-  if (module.accessMode === "free_authenticated") return { allowed: true, label: "Inclus MVP", reason: "free_authenticated" };
+  if (module.accessMode === "free_authenticated") return { allowed: true, label: "Gratuit", reason: "free_authenticated" };
   if (isActiveGrant(access?.allModules)) return { allowed: true, label: "Pack complet", reason: "all_modules" };
   if (isActiveGrant(access?.modules?.[module.id])) return { allowed: true, label: "Module actif", reason: "module_grant" };
   if (isActiveGrant(subscription) && (subscription.scope === "allModules" || subscription.modules?.[module.id] === true)) {
@@ -114,6 +114,8 @@ async function upsertUserProfile(user, displayName = "") {
     email: user.email || "",
     displayName: displayName || user.displayName || "",
     provider: "password",
+    accountType: "free",
+    planId: "free",
     updatedAt: now
   };
   if (snap.exists()) {
