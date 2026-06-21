@@ -115,12 +115,6 @@ async function ensureDefaultFreeAccess(user) {
     planId: "free",
     status: "active",
     allModules: false,
-    modules: {
-      improvote: true,
-      blindtestmaster: true,
-      quizmaster: true,
-      partageo: true
-    },
     source: "signup",
     createdAt: now,
     updatedAt: now
