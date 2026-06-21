@@ -105,6 +105,28 @@ function canAccessModule(module, access = {}, subscription = null) {
   return { allowed: false, label: "Non inclus", reason: "no_grant" };
 }
 
+
+async function ensureDefaultFreeAccess(user) {
+  const accessRef = ref(db, `userAccess/${user.uid}`);
+  const snap = await get(accessRef);
+  if (snap.exists()) return;
+  const now = Date.now();
+  await set(accessRef, {
+    planId: "free",
+    status: "active",
+    allModules: false,
+    modules: {
+      improvote: true,
+      blindtestmaster: true,
+      quizmaster: true,
+      partageo: true
+    },
+    source: "signup",
+    createdAt: now,
+    updatedAt: now
+  });
+}
+
 async function upsertUserProfile(user, displayName = "") {
   const userRef = ref(db, `users/${user.uid}`);
   const snap = await get(userRef);
@@ -120,9 +142,11 @@ async function upsertUserProfile(user, displayName = "") {
   };
   if (snap.exists()) {
     await update(userRef, baseProfile);
+    await ensureDefaultFreeAccess(user);
     return;
   }
   await set(userRef, { ...baseProfile, createdAt: now });
+  await ensureDefaultFreeAccess(user);
 }
 
 function setStatus(selector, message = "", type = "") {
