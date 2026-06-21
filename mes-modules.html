@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mes modules — Modulys</title>
+  <meta name="description" content="Créez votre compte Modulys et accédez aux modules disponibles selon vos droits.">
+  <meta name="theme-color" content="#111827">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;650;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/modulys.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <header class="site-header" aria-label="En-tête du site">
+    <div class="container navbar">
+      <a class="brand" href="index.html" aria-label="Accueil Modulys"><img src="assets/img/modulys-logo.svg" alt="Modulys"></a>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="index.html#modules">Modules</a>
+        <a href="mes-modules.html" aria-current="page">Mes modules</a>
+        <a href="index.html#tarifs">Tarifs</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <div class="nav-actions"><a class="btn btn-secondary" href="index.html">Accueil</a></div>
+      <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" data-menu-toggle><span></span><span></span><span></span></button>
+    </div>
+    <nav class="mobile-menu" aria-label="Navigation mobile" data-mobile-menu>
+      <a href="index.html#modules">Modules</a>
+      <a href="mes-modules.html">Mes modules</a>
+      <a href="index.html#tarifs">Tarifs</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="contenu">
+    <section class="section account-section">
+      <div class="container">
+        <div class="section-header reveal is-visible">
+          <p class="section-kicker">Compte Modulys</p>
+          <h1 class="section-title">Mes modules</h1>
+          <p class="section-text">Un seul compte pour retrouver les modules disponibles. Pour le MVP, tous les comptes connectés ont accès aux modules actifs.</p>
+        </div>
+
+        <section id="authPanel" class="auth-grid" aria-label="Connexion et inscription">
+          <article class="account-card">
+            <h2>Créer mon compte</h2>
+            <p>Inscription gratuite pour accéder aux modules du MVP.</p>
+            <form id="signupForm" class="contact-form">
+              <div class="field"><label for="signupName">Nom</label><input id="signupName" name="displayName" type="text" autocomplete="name" maxlength="80" placeholder="Votre nom"></div>
+              <div class="field"><label for="signupEmail">Email</label><input id="signupEmail" name="email" type="email" autocomplete="email" required placeholder="vous@exemple.fr"></div>
+              <div class="field"><label for="signupPassword">Mot de passe</label><input id="signupPassword" name="password" type="password" autocomplete="new-password" required minlength="6" placeholder="6 caractères minimum"></div>
+              <button class="btn btn-primary" type="submit">Créer mon compte</button>
+              <p id="signupStatus" class="auth-status" role="status"></p>
+            </form>
+          </article>
+
+          <article class="account-card">
+            <h2>Me connecter</h2>
+            <p>Connectez-vous pour afficher vos modules et vos futurs droits d’accès.</p>
+            <form id="loginForm" class="contact-form">
+              <div class="field"><label for="loginEmail">Email</label><input id="loginEmail" name="email" type="email" autocomplete="email" required placeholder="vous@exemple.fr"></div>
+              <div class="field"><label for="loginPassword">Mot de passe</label><input id="loginPassword" name="password" type="password" autocomplete="current-password" required></div>
+              <button class="btn btn-primary" type="submit">Me connecter</button>
+              <button class="btn btn-ghost" id="resetPasswordBtn" type="button">Mot de passe oublié</button>
+              <p id="loginStatus" class="auth-status" role="status"></p>
+            </form>
+          </article>
+        </section>
+
+        <section id="dashboardPanel" hidden>
+          <article class="account-card account-user-card">
+            <div>
+              <p class="section-kicker">Connecté</p>
+              <h2 id="userName">Utilisateur Modulys</h2>
+              <p id="userEmail" class="muted">—</p>
+            </div>
+            <button id="logoutBtn" class="btn btn-secondary" type="button">Déconnexion</button>
+          </article>
+
+          <div class="account-info-grid">
+            <article class="account-note"><strong>MVP actuel</strong><span>Tous les comptes connectés accèdent aux modules actifs déclarés dans Firebase.</span></article>
+            <article class="account-note"><strong>Prêt pour la suite</strong><span>Les chemins <code>userAccess</code>, <code>plans</code> et <code>subscriptions</code> sont prévus pour les paiements.</span></article>
+          </div>
+
+          <section class="modules-account-grid" id="modulesGrid" aria-label="Liste dynamique des modules">
+            <article class="account-card"><p>Chargement des modules…</p></article>
+          </section>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container"><div class="footer-bottom">© <span data-year>2026</span> Modulys. Tous droits réservés.</div></div></footer>
+  <script src="assets/js/modulys.js"></script>
+  <script type="module" src="assets/js/modulys-auth.js"></script>
+</body>
+</html>
