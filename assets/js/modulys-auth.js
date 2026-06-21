@@ -24,7 +24,8 @@ const FALLBACK_MODULES = {
     description: "Votes en direct pour matchs d’impro, battles et spectacles.",
     badge: "Vote public",
     ctaLabel: "Ouvrir ImproVote",
-    icon: "🎭"
+    icon: "🎭",
+    illustrationUrl: "assets/img/module-improvote.svg"
   },
   blindtestmaster: {
     id: "blindtestmaster",
@@ -37,7 +38,8 @@ const FALLBACK_MODULES = {
     description: "Blind test live avec équipes, réponses mobile et classement.",
     badge: "Musique",
     ctaLabel: "Ouvrir BlindTestMaster",
-    icon: "🎵"
+    icon: "🎵",
+    illustrationUrl: "assets/img/module-blindtest.svg"
   },
   quizmaster: {
     id: "quizmaster",
@@ -50,7 +52,8 @@ const FALLBACK_MODULES = {
     description: "Quiz interactif avec timer, QR code, écran public et scores.",
     badge: "Quiz live",
     ctaLabel: "Ouvrir QuizMaster",
-    icon: "❓"
+    icon: "❓",
+    illustrationUrl: "assets/img/module-quizmaster.svg"
   },
   partageo: {
     id: "partageo",
@@ -63,7 +66,8 @@ const FALLBACK_MODULES = {
     description: "Gestion simple des inscriptions et contributions pour repas partagés.",
     badge: "Repas partagé",
     ctaLabel: "Ouvrir Partageo",
-    icon: "🍽️"
+    icon: "🍽️",
+    illustrationUrl: "assets/img/module-partageo.svg"
   }
 };
 
@@ -150,6 +154,18 @@ function setStatus(selector, message = "", type = "") {
   node.className = `auth-status ${type}`.trim();
 }
 
+function moduleIllustration(module = {}) {
+  const explicit = module.illustrationUrl || module.imageUrl || module.image || "";
+  if (explicit) return explicit;
+  const fallback = {
+    improvote: "assets/img/module-improvote.svg",
+    blindtestmaster: "assets/img/module-blindtest.svg",
+    quizmaster: "assets/img/module-quizmaster.svg",
+    partageo: "assets/img/module-partageo.svg"
+  }[module.id];
+  return fallback || "assets/img/module-coming-soon.svg";
+}
+
 function renderModules(modules = {}, access = {}, subscription = null) {
   const grid = $("#modulesGrid");
   if (!grid) return;
@@ -166,12 +182,16 @@ function renderModules(modules = {}, access = {}, subscription = null) {
     const state = canAccessModule(module, access, subscription);
     const url = module.url || "#";
     const disabled = !state.allowed || !url || url === "#";
+    const illustration = moduleIllustration(module);
     return `<article class="module-account-card ${disabled ? "is-locked" : ""}">
+      <div class="module-account-visual" aria-hidden="true">
+        <img src="${escapeHtml(illustration)}" alt="" loading="lazy" onerror="this.closest('.module-account-visual').classList.add('is-fallback');this.remove();">
+        <span class="module-icon module-icon-fallback">${escapeHtml(module.icon || "🧩")}</span>
+      </div>
       <div class="module-account-top">
-        <span class="module-icon" aria-hidden="true">${escapeHtml(module.icon || "🧩")}</span>
+        <span class="module-badge">${escapeHtml(module.badge || "Module")}</span>
         <span class="access-pill">${escapeHtml(state.label)}</span>
       </div>
-      <p class="module-badge">${escapeHtml(module.badge || "Module")}</p>
       <h3>${escapeHtml(module.name || module.id)}</h3>
       <p>${escapeHtml(module.description || "Module Modulys")}</p>
       <div class="module-account-actions">
