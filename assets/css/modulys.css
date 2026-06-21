@@ -333,3 +333,12 @@ a { color: inherit; text-decoration: none; }
 .module-account-actions .btn { width: 100%; }
 button:disabled, .btn:disabled { cursor: not-allowed; opacity: .62; transform: none; }
 @media (max-width: 720px) { .account-user-card { align-items: stretch; flex-direction: column; } }
+
+/* Cartes dynamiques Mes modules : illustrationUrl + fallback emoji */
+.module-account-visual { position: relative; display: grid; place-items: center; min-height: 138px; margin: -6px -6px 18px; border-radius: 22px; overflow: hidden; background: linear-gradient(135deg, #f5f3ff, #fdf2f8); border: 1px solid rgba(124,58,237,.10); }
+.module-account-visual img { width: 100%; height: 154px; object-fit: cover; display: block; }
+.module-account-visual .module-icon-fallback { display: none; }
+.module-account-visual.is-fallback .module-icon-fallback { display: inline-flex; width: 64px; height: 64px; font-size: 34px; }
+.module-account-card .module-account-top { margin-top: 0; }
+.module-account-card .module-badge { margin: 0 !important; }
+@media (max-width: 720px) { .module-account-visual img { height: 132px; } }
