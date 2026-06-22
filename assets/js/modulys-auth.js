@@ -174,7 +174,7 @@ function renderModules(modules = {}, access = {}, subscription = null) {
     .sort((a, b) => Number(a.order || 999) - Number(b.order || 999));
 
   if (!list.length) {
-    grid.innerHTML = `<article class="account-card"><h3>Aucun module déclaré</h3><p>Importez le JSON de démarrage dans Firebase Realtime Database, chemin <code>/modules</code>.</p></article>`;
+    grid.innerHTML = `<article class="account-card"><h3>Aucun module disponible</h3><p>Les modules apparaîtront ici dès qu’ils seront disponibles pour votre compte.</p></article>`;
     return;
   }
 
