@@ -130,11 +130,11 @@
       <div class="container">
         <div class="section-header reveal">
           <p class="section-kicker">Modules disponibles</p>
-          <h2 class="section-title">Les premiers outils Modulys</h2>
-          <p class="section-text">La plateforme démarre avec quatre modules concrets, puis pourra accueillir de nouveaux outils au fil des besoins.</p>
+          <h2 class="section-title">Les outils Modulys</h2>
+          <p class="section-text">Retrouvez ici les modules actifs disponibles sur Modulys. La liste se met à jour automatiquement quand un nouvel outil est ajouté.</p>
         </div>
 
-        <div class="modules-list">
+        <div class="modules-list" id="homeModulesList" aria-label="Modules disponibles">
           <article class="module-card reveal">
             <div class="module-visual">
               <img src="assets/img/module-improvote.svg" alt="Illustration du module ImproVote">
@@ -148,102 +148,10 @@
                 <li>Écran public vidéoprojecteur</li>
                 <li>Interface organisateur</li>
                 <li>Résultats en direct</li>
-                <li>Configuration des équipes</li>
-                <li>Session événementielle simple</li>
               </ul>
               <div class="module-actions">
                 <a class="btn btn-primary" href="https://improvote.modulys.top">Voir ImproVote</a>
-                <a class="btn btn-secondary" href="#contact">Demander une démo</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="module-card reveal">
-            <div class="module-visual">
-              <img src="assets/img/module-blindtest.svg" alt="Illustration du module BlindTestMaster">
-            </div>
-            <div class="module-content">
-              <span class="module-status">Disponible</span>
-              <h3>BlindTestMaster</h3>
-              <p>Un blind test interactif avec équipes, réponses depuis smartphone, écran animateur et classement en direct.</p>
-              <ul class="feature-list">
-                <li>Création de parties</li>
-                <li>Équipes personnalisables</li>
-                <li>Réponses joueurs sur mobile</li>
-                <li>Classement en direct</li>
-                <li>Mode artiste / titre</li>
-                <li>Écran public d’animation</li>
-              </ul>
-              <div class="module-actions">
-                <a class="btn btn-primary" href="https://blindtestmaster.modulys.top">Voir BlindTestMaster</a>
-                <a class="btn btn-secondary" href="#contact">Demander une démo</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="module-card reveal">
-            <div class="module-visual">
-              <img src="assets/img/module-quizmaster.svg" alt="Illustration du module QuizMaster">
-            </div>
-            <div class="module-content">
-              <span class="module-status">Disponible</span>
-              <h3>QuizMaster</h3>
-              <p>Un quiz interactif pour événements, ateliers, formations, classes, soirées et team building, avec réponses sur smartphone et classement en direct.</p>
-              <ul class="feature-list">
-                <li>QCM et vrai / faux</li>
-                <li>Participants par QR code</li>
-                <li>Timer par question</li>
-                <li>Score automatique</li>
-                <li>Classement en direct</li>
-                <li>Écran public immersif</li>
-              </ul>
-              <div class="module-actions">
-                <a class="btn btn-primary" href="https://quizmaster.modulys.top">Voir QuizMaster</a>
-                <a class="btn btn-secondary" href="#contact">Demander une démo</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="module-card reveal">
-            <div class="module-visual">
-              <img src="assets/img/module-partageo.svg" alt="Illustration du module Partageo">
-            </div>
-            <div class="module-content">
-              <span class="module-status">Disponible</span>
-              <h3>Partageo</h3>
-              <p>Un module pour gérer les inscriptions à un repas partagé, les invités, les apports nécessaires et les contributions de chacun.</p>
-              <ul class="feature-list">
-                <li>Page publique d’inscription</li>
-                <li>Code personnel de modification</li>
-                <li>Liste des apports nécessaires</li>
-                <li>Suivi des contributions</li>
-                <li>Interface organisateur</li>
-                <li>Gestion des événements</li>
-              </ul>
-              <div class="module-actions">
-                <a class="btn btn-primary" href="https://partageo.modulys.top">Voir Partageo</a>
                 <a class="btn btn-secondary" href="mes-modules.html">Accéder via mon compte</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="module-card is-coming reveal">
-            <div class="module-visual">
-              <img src="assets/img/module-coming-soon.svg" alt="Illustration des futurs modules Modulys">
-            </div>
-            <div class="module-content">
-              <span class="module-status">Évolutif</span>
-              <h3>D’autres modules arrivent</h3>
-              <p>Modulys est pensé pour accueillir progressivement d’autres outils : tirage au sort, feedback public, votes de jury, planning d’ateliers, outils de formation ou modules sur mesure.</p>
-              <ul class="feature-list">
-                <li>Tirage au sort</li>
-                <li>Feedback public</li>
-                <li>Votes de jury</li>
-                <li>Outils d’ateliers</li>
-                <li>Outils adaptés à vos besoins</li>
-              </ul>
-              <div class="module-actions">
-                <a class="btn btn-secondary" href="#contact">Proposer une idée</a>
               </div>
             </div>
           </article>
@@ -503,5 +411,6 @@
   </footer>
 
   <script src="assets/js/modulys.js"></script>
+  <script type="module" src="assets/js/modulys-home.js?v=1"></script>
 </body>
 </html>

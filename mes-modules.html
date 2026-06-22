@@ -40,13 +40,13 @@
         <div class="section-header reveal is-visible">
           <p class="section-kicker">Compte Modulys</p>
           <h1 class="section-title">Mes modules</h1>
-          <p class="section-text">Un seul compte pour retrouver les modules disponibles. Pour le MVP, tous les comptes connectés ont accès aux modules actifs.</p>
+          <p class="section-text">Un seul compte pour retrouver les modules disponibles et accéder aux outils inclus dans votre offre.</p>
         </div>
 
         <section id="authPanel" class="auth-grid" aria-label="Connexion et inscription">
           <article class="account-card">
             <h2>Créer mon compte</h2>
-            <p>Inscription gratuite pour accéder aux modules du MVP.</p>
+            <p>Inscription gratuite pour accéder aux modules disponibles.</p>
             <form id="signupForm" class="contact-form">
               <div class="field"><label for="signupName">Nom</label><input id="signupName" name="displayName" type="text" autocomplete="name" maxlength="80" placeholder="Votre nom"></div>
               <div class="field"><label for="signupEmail">Email</label><input id="signupEmail" name="email" type="email" autocomplete="email" required placeholder="vous@exemple.fr"></div>
@@ -58,7 +58,7 @@
 
           <article class="account-card">
             <h2>Me connecter</h2>
-            <p>Connectez-vous pour afficher vos modules et vos futurs droits d’accès.</p>
+            <p>Connectez-vous pour afficher vos modules.</p>
             <form id="loginForm" class="contact-form">
               <div class="field"><label for="loginEmail">Email</label><input id="loginEmail" name="email" type="email" autocomplete="email" required placeholder="vous@exemple.fr"></div>
               <div class="field"><label for="loginPassword">Mot de passe</label><input id="loginPassword" name="password" type="password" autocomplete="current-password" required></div>
@@ -80,8 +80,8 @@
           </article>
 
           <div class="account-info-grid">
-            <article class="account-note"><strong>MVP actuel</strong><span>Tous les comptes connectés accèdent aux modules actifs déclarés dans Firebase.</span></article>
-            <article class="account-note"><strong>Prêt pour la suite</strong><span>Les chemins <code>userAccess</code>, <code>plans</code> et <code>subscriptions</code> sont prévus pour les paiements.</span></article>
+            <article class="account-note"><strong>Accès actuel</strong><span>Votre compte permet d’ouvrir les modules disponibles selon votre offre.</span></article>
+            <article class="account-note"><strong>Évolution prévue</strong><span>Les offres payantes et les accès avancés seront ajoutés progressivement.</span></article>
           </div>
 
           <section class="modules-account-grid" id="modulesGrid" aria-label="Liste dynamique des modules">
