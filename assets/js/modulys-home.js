@@ -60,6 +60,18 @@ const FALLBACK_MODULES = {
     ctaLabel: "Voir PhotoboothLive",
     icon: "📸",
     illustrationUrl: "assets/img/module-photoboothlive.svg"
+  },
+  glowup: {
+    id: "glowup",
+    name: "GlowUp",
+    url: "https://glowup.modulys.top",
+    active: true,
+    order: 60,
+    description: "Show lumineux interactif avec les téléphones du public, simplement grâce à un QR code.",
+    badge: "Show lumineux",
+    ctaLabel: "Voir GlowUp",
+    icon: "✨",
+    illustrationUrl: "assets/img/module-glowup.svg"
   }
 };
 
@@ -80,7 +92,8 @@ function moduleIllustration(module = {}) {
     blindtestmaster: "assets/img/module-blindtest.svg",
     quizmaster: "assets/img/module-quizmaster.svg",
     partageo: "assets/img/module-partageo.svg",
-    photoboothlive: "assets/img/module-photoboothlive.svg"
+    photoboothlive: "assets/img/module-photoboothlive.svg",
+    glowup: "assets/img/module-glowup.svg"
   }[module.id] || "assets/img/module-coming-soon.svg";
 }
 

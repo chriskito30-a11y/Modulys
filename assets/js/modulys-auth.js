@@ -68,6 +68,34 @@ const FALLBACK_MODULES = {
     ctaLabel: "Ouvrir Partageo",
     icon: "🍽️",
     illustrationUrl: "assets/img/module-partageo.svg"
+  },
+  photoboothlive: {
+    id: "photoboothlive",
+    name: "PhotoboothLive",
+    shortName: "Photobooth",
+    url: "https://photoboothlive.modulys.top",
+    active: true,
+    order: 50,
+    accessMode: "free_authenticated",
+    description: "Galerie photo collaborative avec QR code, envoi mobile, modération et mur photo live.",
+    badge: "Souvenirs live",
+    ctaLabel: "Ouvrir PhotoboothLive",
+    icon: "📸",
+    illustrationUrl: "assets/img/module-photoboothlive.svg"
+  },
+  glowup: {
+    id: "glowup",
+    name: "GlowUp",
+    shortName: "GlowUp",
+    url: "https://glowup.modulys.top",
+    active: true,
+    order: 60,
+    accessMode: "free_authenticated",
+    description: "Show lumineux interactif avec les téléphones du public, simplement grâce à un QR code.",
+    badge: "Show lumineux",
+    ctaLabel: "Ouvrir GlowUp",
+    icon: "✨",
+    illustrationUrl: "assets/img/module-glowup.svg"
   }
 };
 
@@ -161,7 +189,9 @@ function moduleIllustration(module = {}) {
     improvote: "assets/img/module-improvote.svg",
     blindtestmaster: "assets/img/module-blindtest.svg",
     quizmaster: "assets/img/module-quizmaster.svg",
-    partageo: "assets/img/module-partageo.svg"
+    partageo: "assets/img/module-partageo.svg",
+    photoboothlive: "assets/img/module-photoboothlive.svg",
+    glowup: "assets/img/module-glowup.svg"
   }[module.id];
   return fallback || "assets/img/module-coming-soon.svg";
 }
