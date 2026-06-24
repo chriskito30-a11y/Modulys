@@ -6,7 +6,10 @@ import {
   update,
   onValue,
   get,
-  remove
+  remove,
+  query,
+  orderByChild,
+  equalTo
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
 
 export const firebaseConfig = {
@@ -32,5 +35,8 @@ export {
   update,
   onValue,
   get,
-  remove
+  remove,
+  query,
+  orderByChild,
+  equalTo
 };

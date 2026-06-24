@@ -1,4 +1,4 @@
-import { app, db, ref, set, update, onValue, get } from "./firebase-config.js";
+import { app, db, ref, set, update, onValue, get, query, orderByChild, equalTo } from "./firebase-config.js";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -209,6 +209,128 @@ function moduleIllustration(module = {}) {
   return fallback || "assets/img/module-coming-soon.svg";
 }
 
+
+const MODULE_EVENT_SOURCES = [
+  { moduleId: "improvote", path: "rooms", type: "room", queryOwner: false, idParam: "room" },
+  { moduleId: "blindtestmaster", path: "blindRooms", type: "room", queryOwner: false, idParam: "room" },
+  { moduleId: "quizmaster", path: "quizRooms", type: "room", queryOwner: false, idParam: "room" },
+  { moduleId: "partageo", path: "events", type: "event", queryOwner: false, idParam: "event" },
+  { moduleId: "photoboothlive", path: "moduleData/photoboothlive/sessions", type: "session", queryOwner: true, idParam: "session" },
+  { moduleId: "glowup", path: "moduleData/glowup/sessions", type: "session", queryOwner: true, idParam: "session" }
+];
+
+function normalizeEventRecord(source, id, raw = {}) {
+  const moduleId = raw.moduleId || source.moduleId;
+  const title = raw.title || raw.config?.title || raw.meta?.title || raw.id || id;
+  const subtitle = raw.subtitle || raw.config?.subtitle || raw.description || raw.meta?.subtitle || "";
+  const createdAt = Number(raw.createdAt || raw.private?.createdAt || raw.meta?.createdAt || 0);
+  const updatedAt = Number(raw.updatedAt || raw.config?.updatedAt || raw.meta?.updatedAt || createdAt || 0);
+  const eventDate = raw.eventDate || raw.config?.eventDate || raw.public?.eventDate || "";
+  const expiresAt = Number(raw.expiresAt || raw.config?.expiresAt || raw.public?.expiresAt || 0);
+  return { id, moduleId, title, subtitle, createdAt, updatedAt, eventDate, expiresAt, raw, source };
+}
+
+function eventUrls(event, module = {}) {
+  const base = String(module.url || "").replace(/\/$/, "");
+  const id = encodeURIComponent(event.id);
+  if (!base) return [];
+  if (event.moduleId === "improvote") return [
+    ["Gérer", `${base}/settings.html?room=${id}`],
+    ["Vote public", `${base}/vote.html?room=${id}`],
+    ["Grand écran", `${base}/screen.html?room=${id}`]
+  ];
+  if (event.moduleId === "blindtestmaster") return [
+    ["Gérer", `${base}/settings.html?room=${id}`],
+    ["Joueurs", `${base}/vote.html?room=${id}`],
+    ["Grand écran", `${base}/screen.html?room=${id}`]
+  ];
+  if (event.moduleId === "quizmaster") return [
+    ["Gérer", `${base}/admin.html?room=${id}`],
+    ["Participants", `${base}/player.html?room=${id}`],
+    ["Grand écran", `${base}/screen.html?room=${id}`]
+  ];
+  if (event.moduleId === "partageo") return [
+    ["Gérer", `${base}/admin.html?event=${id}`],
+    ["Lien public", `${base}/index.html?event=${id}`]
+  ];
+  if (event.moduleId === "photoboothlive") return [
+    ["Gérer", `${base}/session.html?session=${id}`],
+    ["Invités", `${base}/join.html?session=${id}`],
+    ["Mur photo", `${base}/wall.html?session=${id}`]
+  ];
+  if (event.moduleId === "glowup") return [
+    ["Gérer", `${base}/session.html?session=${id}`],
+    ["Participants", `${base}/join.html?session=${id}`]
+  ];
+  return [["Ouvrir", base]];
+}
+
+function formatDateLabel(event) {
+  const value = event.eventDate || event.updatedAt || event.createdAt;
+  if (!value) return "Date non définie";
+  const date = typeof value === "number" ? new Date(value) : new Date(String(value));
+  if (Number.isNaN(date.getTime())) return String(value);
+  return date.toLocaleDateString("fr-FR", { day: "2-digit", month: "short", year: "numeric" });
+}
+
+function eventStatusLabel(event) {
+  if (event.expiresAt && event.expiresAt < Date.now()) return "Expiré";
+  if (event.raw?.status === "closed") return "Fermé";
+  if (event.raw?.status === "open") return "Ouvert";
+  return "Disponible";
+}
+
+async function fetchModuleEvents(user, source) {
+  const baseRef = ref(db, source.path);
+  const snap = source.queryOwner
+    ? await get(query(baseRef, orderByChild("ownerUid"), equalTo(user.uid)))
+    : await get(baseRef);
+  const rows = snap.val() || {};
+  return Object.entries(rows)
+    .filter(([, raw]) => raw && (raw.ownerUid === user.uid || raw.meta?.ownerUid === user.uid))
+    .map(([id, raw]) => normalizeEventRecord(source, id, raw));
+}
+
+async function loadRecentEvents(user, modules = FALLBACK_MODULES) {
+  const grid = $("#eventsGrid");
+  if (!grid) return;
+  grid.innerHTML = `<article class="account-card"><p>Recherche de vos événements…</p></article>`;
+  try {
+    const results = await Promise.allSettled(MODULE_EVENT_SOURCES.map((source) => fetchModuleEvents(user, source)));
+    const events = results.flatMap((result) => result.status === "fulfilled" ? result.value : [])
+      .sort((a, b) => Number(b.updatedAt || b.createdAt || 0) - Number(a.updatedAt || a.createdAt || 0))
+      .slice(0, 18);
+    renderRecentEvents(events, modules);
+  } catch (error) {
+    grid.innerHTML = `<article class="account-card"><h3>Événements indisponibles</h3><p>Impossible de charger vos animations pour le moment.</p></article>`;
+  }
+}
+
+function renderRecentEvents(events = [], modules = FALLBACK_MODULES) {
+  const grid = $("#eventsGrid");
+  if (!grid) return;
+  if (!events.length) {
+    grid.innerHTML = `<article class="account-card"><h3>Aucun événement créé</h3><p>Créez votre première animation depuis un module Modulys. Elle apparaîtra ensuite ici.</p></article>`;
+    return;
+  }
+  grid.innerHTML = events.map((event) => {
+    const module = modules[event.moduleId] || FALLBACK_MODULES[event.moduleId] || { name: event.moduleId, badge: "Module", icon: "🧩" };
+    const links = eventUrls(event, module);
+    return `<article class="event-account-card">
+      <div class="event-account-top">
+        <span class="module-badge">${escapeHtml(module.icon || "🧩")} ${escapeHtml(module.name || event.moduleId)}</span>
+        <span class="access-pill">${escapeHtml(eventStatusLabel(event))}</span>
+      </div>
+      <h3>${escapeHtml(event.title || event.id)}</h3>
+      <p>${escapeHtml(event.subtitle || "Animation Modulys")}</p>
+      <p class="event-meta">${escapeHtml(formatDateLabel(event))} · identifiant : <strong>${escapeHtml(event.id)}</strong></p>
+      <div class="event-account-actions">
+        ${links.map(([label, url], index) => `<a class="btn ${index === 0 ? "btn-primary" : "btn-secondary"}" href="${escapeHtml(url)}">${escapeHtml(label)}</a>`).join("")}
+      </div>
+    </article>`;
+  }).join("");
+}
+
 function renderModules(modules = {}, access = {}, subscription = null) {
   const grid = $("#modulesGrid");
   if (!grid) return;
@@ -260,10 +382,13 @@ function bootDashboard(user) {
   let lastAccess = {};
   let lastSubscription = null;
   renderModules(lastModules, lastAccess, lastSubscription);
+  loadRecentEvents(user, lastModules);
+  $("#refreshEventsBtn")?.addEventListener("click", () => loadRecentEvents(user, lastModules));
 
   onValue(ref(db, "modules"), (snap) => {
     lastModules = snap.val() || FALLBACK_MODULES;
     renderModules(lastModules, lastAccess, lastSubscription);
+    loadRecentEvents(user, lastModules);
   }, () => renderModules(lastModules, lastAccess, lastSubscription));
 
   onValue(ref(db, `userAccess/${user.uid}`), (snap) => {
