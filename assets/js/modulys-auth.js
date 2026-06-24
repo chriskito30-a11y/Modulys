@@ -128,9 +128,9 @@ function isActiveGrant(grant) {
 function canAccessModule(module, access = {}, subscription = null) {
   if (!module?.active) return { allowed: false, label: "Indisponible", reason: "module_inactive" };
   if (module.accessMode === "public") return { allowed: true, label: "Accès public", reason: "public" };
-  if (module.accessMode === "free_authenticated") return { allowed: true, label: "Gratuit", reason: "free_authenticated" };
+  if (module.accessMode === "free_authenticated") return { allowed: true, label: "Offre Découverte", reason: "free_authenticated" };
   if (isActiveGrant(access?.allModules)) return { allowed: true, label: "Pack complet", reason: "all_modules" };
-  if (isActiveGrant(access?.modules?.[module.id])) return { allowed: true, label: "Module actif", reason: "module_grant" };
+  if (isActiveGrant(access?.modules?.[module.id])) return { allowed: true, label: "Accès activé", reason: "module_grant" };
   if (isActiveGrant(subscription) && (subscription.scope === "allModules" || subscription.modules?.[module.id] === true)) {
     return { allowed: true, label: "Abonnement actif", reason: "subscription" };
   }
@@ -173,6 +173,19 @@ async function upsertUserProfile(user, displayName = "") {
   }
   await set(userRef, { ...baseProfile, createdAt: now });
   await ensureDefaultFreeAccess(user);
+}
+
+
+function friendlyAuthMessage(error, fallback = "Une erreur est survenue, veuillez réessayer.") {
+  const code = String(error?.code || "").toLowerCase();
+  const raw = String(error?.message || "");
+  if (code.includes("email-already-in-use")) return "Un compte existe déjà avec cet email.";
+  if (code.includes("invalid-email")) return "L’adresse email semble invalide.";
+  if (code.includes("weak-password")) return "Choisissez un mot de passe plus solide.";
+  if (code.includes("invalid-credential") || code.includes("wrong-password") || code.includes("user-not-found")) return "Email ou mot de passe incorrect.";
+  if (code.includes("too-many-requests")) return "Trop de tentatives. Réessayez un peu plus tard.";
+  const technical = /firebase|permission_denied|permission denied|internal|bad request|missing or insufficient|cannot read properties|undefined|null/i.test(raw);
+  return technical ? fallback : (raw || fallback);
 }
 
 function setStatus(selector, message = "", type = "") {
@@ -278,7 +291,7 @@ $("#signupForm")?.addEventListener("submit", async (event) => {
     form.reset();
     setStatus("#signupStatus", "Compte créé. Vos modules sont prêts.", "success");
   } catch (error) {
-    setStatus("#signupStatus", error.message || "Impossible de créer le compte.", "error");
+    setStatus("#signupStatus", friendlyAuthMessage(error, "Impossible de créer le compte."), "error");
   }
 });
 
@@ -292,7 +305,7 @@ $("#loginForm")?.addEventListener("submit", async (event) => {
     form.reset();
     setStatus("#loginStatus", "Connexion réussie.", "success");
   } catch (error) {
-    setStatus("#loginStatus", error.message || "Connexion impossible.", "error");
+    setStatus("#loginStatus", friendlyAuthMessage(error, "Connexion impossible."), "error");
   }
 });
 
@@ -303,7 +316,7 @@ $("#resetPasswordBtn")?.addEventListener("click", async () => {
     await sendPasswordResetEmail(auth, email);
     setStatus("#loginStatus", "Email de réinitialisation envoyé.", "success");
   } catch (error) {
-    setStatus("#loginStatus", error.message || "Impossible d’envoyer l’email.", "error");
+    setStatus("#loginStatus", friendlyAuthMessage(error, "Impossible d’envoyer l’email."), "error");
   }
 });
 
