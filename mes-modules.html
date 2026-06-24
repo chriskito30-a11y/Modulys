@@ -84,8 +84,31 @@
             <article class="account-note"><strong>Évolution prévue</strong><span>Les offres payantes et les accès avancés seront ajoutés progressivement.</span></article>
           </div>
 
-          <section class="modules-account-grid" id="modulesGrid" aria-label="Liste dynamique des modules">
-            <article class="account-card"><p>Chargement des modules…</p></article>
+          <section class="dashboard-block" aria-labelledby="modulesTitle">
+            <div class="dashboard-block-head">
+              <div>
+                <p class="section-kicker">Suite Modulys</p>
+                <h2 id="modulesTitle">Mes modules</h2>
+                <p class="muted">Ouvrez un outil pour créer ou gérer une animation.</p>
+              </div>
+            </div>
+            <section class="modules-account-grid" id="modulesGrid" aria-label="Liste dynamique des modules">
+              <article class="account-card"><p>Chargement des modules…</p></article>
+            </section>
+          </section>
+
+          <section class="dashboard-block" aria-labelledby="eventsTitle">
+            <div class="dashboard-block-head">
+              <div>
+                <p class="section-kicker">Animations</p>
+                <h2 id="eventsTitle">Mes événements récents</h2>
+                <p class="muted">Retrouvez rapidement vos quiz, votes, repas partagés, galeries photo et shows lumineux.</p>
+              </div>
+              <button id="refreshEventsBtn" class="btn btn-secondary" type="button">Actualiser</button>
+            </div>
+            <div id="eventsGrid" class="events-account-grid" aria-live="polite">
+              <article class="account-card"><p>Connectez-vous pour afficher vos événements.</p></article>
+            </div>
           </section>
         </section>
       </div>
